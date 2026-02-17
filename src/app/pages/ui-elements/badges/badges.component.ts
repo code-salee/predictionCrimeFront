@@ -2,10 +2,15 @@ import { Component } from '@angular/core';
 import { PageBreadcrumbComponent } from '../../../shared/components/common/page-breadcrumb/page-breadcrumb.component';
 import { ComponentCardComponent } from '../../../shared/components/common/component-card/component-card.component';
 import { BadgeComponent } from '../../../shared/components/ui/badge/badge.component';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-badges',
+  standalone: true, 
   imports: [
+    CommonModule, 
+    RouterModule,
     PageBreadcrumbComponent,
     ComponentCardComponent,
     BadgeComponent,

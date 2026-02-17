@@ -1,4 +1,4 @@
-import { KeyValuePipe } from '@angular/common';
+import { CommonModule, KeyValuePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FullCalendarComponent, FullCalendarModule } from '@fullcalendar/angular';
 
@@ -8,6 +8,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { ModalComponent } from '../../shared/components/ui/modal/modal.component';
+import { RouterModule } from '@angular/router';
 
 interface CalendarEvent extends EventInput {
   extendedProps: {
@@ -17,7 +18,10 @@ interface CalendarEvent extends EventInput {
 
 @Component({
   selector: 'app-calender',
+  standalone: true, 
   imports: [
+    CommonModule, 
+    RouterModule,
     FormsModule,
     KeyValuePipe,
     FullCalendarModule,

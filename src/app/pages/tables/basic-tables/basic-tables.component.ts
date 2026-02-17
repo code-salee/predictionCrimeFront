@@ -6,10 +6,15 @@ import { BasicTableTwoComponent } from '../../../shared/components/tables/basic-
 import { BasicTableThreeComponent } from '../../../shared/components/tables/basic-tables/basic-table-three/basic-table-three.component';
 import { BasicTableFourComponent } from '../../../shared/components/tables/basic-tables/basic-table-four/basic-table-four.component';
 import { BasicTableFiveComponent } from '../../../shared/components/tables/basic-tables/basic-table-five/basic-table-five.component';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-basic-tables',
+  standalone: true, 
   imports: [
+    CommonModule, 
+    RouterModule,
     ComponentCardComponent,
     PageBreadcrumbComponent,
     BasicTableOneComponent,
