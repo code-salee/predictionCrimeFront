@@ -1,8 +1,6 @@
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
 
-# token_for_use_general -> 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
-
 # Compiled output
 /dist
 /tmp
