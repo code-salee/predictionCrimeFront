@@ -1,0 +1,26 @@
+.min-h-screen {
+    background-image: url('../../../../../../public/images/img/authentification-bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.bg-personnalize {
+    opacity: 0.8;
+}
+
+.btn-submit{
+    background-color: var(--color-primary);
+    opacity: 1;
+}
+.btn-submit:hover{
+    color: var(--color-primary);
+     background-color: var(--color-white);
+     border: 1px solid var(--color-primary);
+}
+.forget-password, .sign-up{
+    color: var(--color-primary);
+     text-decoration: none;
+} 
+.forget-password:hover, .sign-up:hover{
+    color: var(--color-black);
+}
