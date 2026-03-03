@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
     ThemeToggleTwoComponent,
   ],
   templateUrl: './auth-page-layout.component.html',
+  styleUrl: './auth-page-layout.component.css',
 })
 export class AuthPageLayoutComponent {
 

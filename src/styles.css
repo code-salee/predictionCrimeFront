@@ -8,6 +8,16 @@ layer(base);
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+  --color-primary:  #600F17;
+  --color-white: #ffffff;
+  --color-black: #101828;
+
+
+
+
+
+
+
   --font-*: initial;
   --font-outfit: Outfit, sans-serif;
 
@@ -40,8 +50,7 @@ layer(base);
 
   --color-current: currentColor;
   --color-transparent: transparent;
-  --color-white: #ffffff;
-  --color-black: #101828;
+
 
   --color-brand-25: #f2f7ff;
   --color-brand-50: #ecf3ff;
