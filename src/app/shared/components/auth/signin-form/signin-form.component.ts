@@ -19,6 +19,7 @@ import { CommonModule } from '@angular/common';
     RouterModule,
     ReactiveFormsModule
 ],
+  standalone: true,
   templateUrl: './signin-form.component.html',
   styleUrl: './signin-form.component.css',
 

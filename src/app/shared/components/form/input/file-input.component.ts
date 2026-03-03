@@ -1,9 +1,17 @@
 
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-file-input',
   imports: [],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => FileInputComponent),
+      multi: true
+    }
+  ],
   template: `
     <input
       type="file"
@@ -15,12 +23,32 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   `,
   styles: ``
 })
-export class FileInputComponent {
+
+ export class FileInputComponent implements ControlValueAccessor {
 
   @Input() className: string = '';
   @Output() change = new EventEmitter<Event>();
 
+  private _onChange: (val: any) => void = () => {};
+  private _onTouched: () => void = () => {};
+
+  writeValue(value: any): void {}
+
+  registerOnChange(fn: any): void {
+    this._onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this._onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {}
+
   onChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0] ?? null;
+    this._onChange(file);
+    this._onTouched();
     this.change.emit(event);
   }
 }
