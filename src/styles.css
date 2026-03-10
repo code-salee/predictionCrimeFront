@@ -7,6 +7,29 @@ layer(base);
 
 @custom-variant dark (&:is(.dark *));
 
+.btn-personalize{
+    background-color: var(--color-primary);
+    opacity: 1;
+    border: 1px solid var(--color-primary);
+}
+.btn-personalize:hover{
+    color: var(--color-primary);
+     background-color: var(--color-white);
+     border: 1px solid var(--color-primary);
+     .icon-plus{
+fill: var(--color-primary);
+    opacity: 1;
+}
+}
+.icon-plus{
+    fill: var(--color-white);
+    opacity: 1;
+}
+
+.icon-plus:hover{
+    fill: var(--color-primary);
+}
+
 @theme {
   --color-primary:  #600F17;
   --color-white: #ffffff;

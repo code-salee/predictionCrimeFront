@@ -15,6 +15,16 @@ export const routes: Routes = [
             'Prediction Crime | Dashboard', 
       },
       {
+        path:'crime',
+        loadComponent: () => import('./pages/crime/crime.component').then(c => c.CrimeComponent),
+        title:'Prediction Crime | Crime'
+      },
+      {
+        path:'crime/add',
+        loadComponent: () => import('./pages/crime/add-crime/add-crime.component').then(c => c.AddCrimeComponent),
+        title:'Prediction Crime | Add Crime'
+      },
+      {
         path:'calendar',
         loadComponent: () => import('./pages/calender/calender.component').then(c => c.CalenderComponent)
       },
@@ -30,7 +40,7 @@ export const routes: Routes = [
       },
       {
         path:'basic-tables',
-        loadComponent: () => import('./pages/tables/basic-tables/basic-tables.component').then(c => c.BasicTablesComponent),
+        loadComponent: () => import('./pages/tables/tables.component').then(c => c.BasicTablesComponent),
         title:'Prediction Crime | Basic Tables'
       },
       {

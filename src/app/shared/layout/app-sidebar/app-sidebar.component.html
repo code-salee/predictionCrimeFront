@@ -15,34 +15,50 @@
   (mouseenter)="onSidebarMouseEnter()"
   (mouseleave)="sidebarService.setHovered(false)"
 >
-  <div
-    class="py-8 flex"
-    [ngClass]="{
-      'xl:justify-center': !((isExpanded$ | async) || (isHovered$ | async)),
-      'justify-start': (isExpanded$ | async) || (isHovered$ | async)
-    }"
-  >
-    <a routerLink="/">
-      @if ((isExpanded$ | async) || (isHovered$ | async) || (isMobileOpen$ | async)) {
+<div
+  class="py-8 flex"
+  [ngClass]="{
+    'xl:justify-center': !((isExpanded$ | async) || (isHovered$ | async)),
+    'justify-start': (isExpanded$ | async) || (isHovered$ | async)
+  }"
+>
+  <a routerLink="/" class="flex items-center gap-3">
+
+    @if ((isExpanded$ | async) || (isHovered$ | async) || (isMobileOpen$ | async)) {
+
       <img
         class="dark:hidden"
-        src="/images/logo/logo.svg"
+        src="/images/logo/fingerprint.png"
         alt="Logo"
-        width="150"
-        height="40"
+        width="50"
+        height="20"
       />
+
       <img
         class="hidden dark:block"
-        src="/images/logo/logo-dark.svg"
+         src="/images/logo/fingerprint.png"
         alt="Logo"
-        width="150"
-        height="40"
+        width="50"
+        height="20"
       />
-      } @else {
-      <img src="/images/logo/logo-icon.svg" alt="Logo" width="32" height="32" />
-      }
-    </a>
-  </div>
+
+      <p class="font-semibold text-gray-700 dark:text-white">
+        PREDICTION CRIME
+      </p>
+
+    } @else {
+
+      <img
+        src="/images/logo/fingerprint.png"
+        alt="Logo"
+        width="50"
+        height="20"
+      />
+
+    }
+
+  </a>
+</div>
 
   <div class="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar">
     <nav class="mb-6">

@@ -26,9 +26,11 @@
         }
       </button>
       <!-- Logo (placeholder) -->
-      <a routerLink="/" class="xl:hidden">
-        <img class="dark:hidden" src="/images/logo/logo.svg" alt="Logo" />
-        <img class="hidden dark:block" src="/images/logo/logo-dark.svg" alt="Logo" />
+      <a routerLink="/" class="xl:hidden flex items-center gap-3">
+        <img class="dark:hidden" src="/images/logo/fingerprint.png" alt="Logo" style="width: 2.5em; height: 2.5em;"/>
+        <p class="dark:hidden font-semibold text-gray-700 dark:text-white"> PREDICTION CRIME </p>
+        <img class="hidden dark:block"  src="/images/logo/fingerprint.png" alt="Logo" style="width: 2.5em; height: 2.5em;"/>
+        <p class="hidden dark:block font-semibold text-gray-700 dark:text-white"> PREDICTION CRIME </p>
       </a>
       <button (click)="toggleApplicationMenu()"
         class="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg z-99999 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 xl:hidden">
