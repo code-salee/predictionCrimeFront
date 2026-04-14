@@ -4,7 +4,8 @@
       <app-button size="sm" 
         [endIcon]="icons.plus" 
         class="inline-flex items-center gap-2 rounded-lg px-1 py-1 text-theme-sm font-medium" 
-        type="button" (click)="goToAddCrime()">
+        type="button"
+        (click)="openModalAddCrime()">
             Add Crime
         </app-button>
     </div>
@@ -13,5 +14,15 @@
     [data]="tableData"
     [config]="tableConfig"
     />
+
+    <div>
+        <app-add-crime
+        [isOpened]="isModalAddCrimeOpen"
+        (close)="closeModalAddCrime()"
+        [data] = "crimeData"
+        [mode]="actionMode"
+          >
+        </app-add-crime>
+    </div>
 </div>
 <!-- <router-outlet></router-outlet> -->

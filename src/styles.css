@@ -76,7 +76,15 @@ fill: var(--color-primary);
 
 
   --color-brand-25: #f2f7ff;
-  --color-brand-50: #ecf3ff;
+  --color-brand-50:  #fdf2f3;
+  --color-brand-100: #fce7e9;
+  --color-brand-300: #f4a0a7;
+  --color-brand-400: #eb6e78;
+  --color-brand-500: #600F17;  
+  --color-brand-600: #4d0c12;
+  --color-brand-700: #3a090d;
+
+  /* --color-brand-50: #ecf3ff;
   --color-brand-100: #dde9ff;
   --color-brand-200: #c2d6ff;
   --color-brand-300: #9cb9ff;
@@ -86,7 +94,7 @@ fill: var(--color-primary);
   --color-brand-700: #2a31d8;
   --color-brand-800: #252dae;
   --color-brand-900: #262e89;
-  --color-brand-950: #161950;
+  --color-brand-950: #161950; */
 
   --color-blue-light-25: #f5fbff;
   --color-blue-light-50: #f0f9ff;
@@ -590,9 +598,9 @@ span.flatpickr-weekday,
   fill: none !important;
 }
 
-.flatpickr-calendar.static {
+/* .flatpickr-calendar.static {
   @apply right-0;
-}
+} */
 .flatpickr-calendar.hasTime {
   width: 300px !important;
 }

@@ -1,9 +1,5 @@
 
 import { Component, inject } from '@angular/core';
-// import { LabelComponent } from '../../form/label/label.component';
-// import { CheckboxComponent } from '../../form/input/checkbox.component';
-// import { ButtonComponent } from '../../ui/button/button.component';
-// import { InputFieldComponent } from '../../form/input/input-field.component';
 import { Router, RouterModule } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -11,10 +7,6 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-signin-form',
   imports: [
-    // LabelComponent,
-    // CheckboxComponent,
-    // ButtonComponent,
-    // InputFieldComponent,
     CommonModule,          
     RouterModule,
     ReactiveFormsModule
