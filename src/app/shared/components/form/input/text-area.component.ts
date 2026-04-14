@@ -1,14 +1,24 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, forwardRef } from '@angular/core';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+
 
 
 @Component({
   selector: 'app-text-area',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => TextAreaComponent),
+      multi: true
+    }
+  ],
   template: `
     <div class="relative">
       <textarea
         [placeholder]="placeholder"
+        [name]="name"
         [rows]="rows"
         [value]="value"
         (input)="onInput($event)"
@@ -24,23 +34,49 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
       }
     </div>
   `,
-  styles: ``
+  styles: ``,
+  standalone: true,
 })
-export class TextAreaComponent {
+export class TextAreaComponent implements ControlValueAccessor {
 
+  @Input() name = '';
   @Input() placeholder = 'Enter your message';
-  @Input() rows = 3;
-  @Input() value = '';
+  @Input() rows = 4;
   @Input() className = '';
   @Input() disabled = false;
   @Input() error = false;
   @Input() hint = '';
+  @Input() value: string | number = '';
+
 
   @Output() valueChange = new EventEmitter<string>();
 
-  onInput(event: Event) {
-    const val = (event.target as HTMLTextAreaElement).value;
-    this.valueChange.emit(val);
+   
+  private _onChange: (val: any) => void = () => {};
+  onTouched: () => void = () => {};
+
+  writeValue(val: string | number): void {
+    this.value = val ?? '';
+  }
+
+  registerOnChange(fn: any): void {
+    this._onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
+  onInput(event: Event): void {
+    const input = event.target as HTMLTextAreaElement;
+    const val = input.value;
+    this.value = val;
+    this._onChange(val);           
+    this.valueChange.emit(val);    
   }
 
   get textareaClasses(): string {

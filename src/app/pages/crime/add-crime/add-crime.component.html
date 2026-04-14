@@ -1,0 +1,128 @@
+@if (isOpened) {
+
+  <!-- Backdrop -->
+  <div
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-opacity duration-200"
+    (click)="closeModal()"
+  >
+
+    <!-- Modal -->
+    <div
+      class="relative w-full max-w-lg mx-4 transform transition-all duration-200 scale-100 opacity-100"
+      (click)="$event.stopPropagation()"
+    >
+
+      <div class="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+
+        <!-- Header -->
+        <div class="flex items-center justify-between px-6 py-4 border-b">
+          <h3 class="text-lg font-semibold">
+              {{ mode === 'view' ? 'View Crime' : mode === 'edit' ? 'Edit Crime' : 'Add Crime' }}
+
+          </h3>
+
+          <button
+            (click)="closeModal()"
+            class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 transition"
+          >
+            ✕
+          </button>
+        </div>
+
+        <!-- Body -->
+        <form (ngSubmit)="submitForm()" [formGroup]="crimeForm" class="px-6 py-5 space-y-4">
+          <div class="relative">
+            <app-input-field  id="type"
+                placeholder="Enter your type"  formControlName="type"
+              [ngClass]="{'border-red-500': crimeForm.get('type')?.invalid && crimeForm.get('type')?.touched,
+                'border-green-500': crimeForm.get('type')?.valid,
+                  'border-gray-500/30': !crimeForm.get('type')?.touched}"
+                  [value]="data?.type ?? ''"/>
+                  
+                @if (crimeForm.get('type')?.invalid && (crimeForm.get('type')?.dirty || crimeForm.get('type')?.touched)) {
+                      @if (crimeForm.get('type')?.hasError('required')) {
+                        <span class="text-red-500 text-md"> Type is required</span>
+                      }
+                      @if (crimeForm.get('type')?.hasError('minlength')) {
+                        <span class="text-red-500 text-md"> Type must be at least 3 characters long.</span>
+                      }
+                      @if (crimeForm.get('type')?.hasError('forbiddenName')) {
+                        <span class="text-red-500 text-md"> Type is not allowed.</span>
+                      }
+                }       
+          </div>
+          
+          <div class="relative">
+              <app-input-field  id="place"
+                 placeholder="Enter your place" formControlName="place"
+                [ngClass]="{'border-red-500': crimeForm.get('place')?.invalid && crimeForm.get('place')?.touched,
+                      'border-green-500': crimeForm.get('place')?.valid,
+                      'border-gray-500/30': !crimeForm.get('place')?.touched}"
+                      [value]="data?.place ?? ''"/>
+                @if (crimeForm.get('place')?.invalid && (crimeForm.get('place')?.dirty || crimeForm.get('place')?.touched)) {
+                      @if (crimeForm.get('place')?.hasError('required')) {
+                        <span class="text-red-500 text-md"> Place is required</span>
+                      }
+                      @if (crimeForm.get('place')?.hasError('minlength')) {
+                        <span class="text-red-500 text-md"> Place must be at least 3 characters long.</span>
+                      }
+                      @if (crimeForm.get('place')?.hasError('forbiddenName')) {
+                        <span class="text-red-500 text-md"> Place is not allowed.</span>
+                      }
+                }
+          </div>
+
+          <div class="relative">
+            <app-input-field  id="victimsNo"
+                type="number" placeholder="Enter your victimsNo" formControlName="victimsNo"
+                [ngClass]="{'border-red-500': crimeForm.get('victimsNo')?.invalid && crimeForm.get('victimsNo')?.touched,
+                      'border-green-500': crimeForm.get('victimsNo')?.valid,
+                      'border-gray-500/30': !crimeForm.get('victimsNo')?.touched}"
+                      [value]="data?.victimsNo ?? ''"/>
+                @if (crimeForm.get('victimsNo')?.invalid && (crimeForm.get('victimsNo')?.dirty || crimeForm.get('victimsNo')?.touched)) {
+                      @if (crimeForm.get('victimsNo')?.hasError('required')) {
+                        <span class="text-red-500 text-md"> Number of victims is required</span>
+                      }
+                      @if (crimeForm.get('victimsNo')?.hasError('min')) {
+                        <span class="text-red-500 text-md"> Minimum value is 0.</span>
+                      }
+                      @if (crimeForm.get('victimsNo')?.hasError('forbiddenName')) {
+                        <span class="text-red-500 text-md"> Number of victims is not allowed.</span>
+                      }
+                }
+          </div>
+
+          <div class="relative">
+            <app-date-picker
+              id="date-picker"
+              placeholder="Select a date"
+              (dateChange)="handleDateChange($event)"
+              [value]="data?.date ?? ''"
+              [attr.disabled]="mode === 'view'"
+              />
+                @if (crimeForm.get('date')?.invalid && (crimeForm.get('date')?.dirty || crimeForm.get('date')?.touched)) {
+                      @if (crimeForm.get('date')?.hasError('required')) {
+                        <span class="text-red-500 text-md"> Date is required</span>
+                      }
+                }
+          </div>
+
+          <div class="relative">
+            <app-text-area id="description" formControlName="description" [value]="data?.description ?? ''"></app-text-area>
+          </div>
+
+            <div class="flex justify-end gap-2 pt-4">
+              <app-button type="button" (click)="closeModal()" [disabled]="mode === 'view'"  size="sm" variant="outline" class="inline-flex items-center rounded-lg px-4 py-2 text-theme-sm font-medium">
+                Cancel
+              </app-button>
+
+              <app-button  type="submit" size="sm" [disabled]="mode === 'view'" class="inline-flex items-center rounded-lg px-4 py-2 text-theme-sm font-medium" >
+              {{ mode === 'edit' ? 'Edit' : mode === 'add' ? 'Add' : 'View' }}
+              </app-button>
+            </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+}
